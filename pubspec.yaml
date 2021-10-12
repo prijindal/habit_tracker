@@ -59,6 +59,7 @@ dev_dependencies:
   random_string: ^2.2.0-nullsafety
   test: ^1.16.5
   flutter_lints: ^1.0.4
+  change_app_package_name: ^1.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

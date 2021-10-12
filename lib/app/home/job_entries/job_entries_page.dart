@@ -70,8 +70,8 @@ class JobEntriesAppBarTitle extends ConsumerWidget {
     final jobAsyncValue = ref.watch(jobStreamProvider(job.id));
     return jobAsyncValue.when(
       data: (job) => Text(job.name),
-      loading: () => Container(),
-      error: (_, __) => Container(),
+      loading: (_) => Container(),
+      error: (_, __, ___) => Container(),
     );
   }
 }
