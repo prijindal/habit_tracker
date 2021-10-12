@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:firestore_service/firestore_service.dart';
-import 'package:starter_architecture_flutter_firebase/app/home/models/entry.dart';
-import 'package:starter_architecture_flutter_firebase/app/home/models/job.dart';
-import 'package:starter_architecture_flutter_firebase/services/firestore_path.dart';
+import 'package:habit_tracker/app/home/models/entry.dart';
+import 'package:habit_tracker/app/home/models/job.dart';
+import 'package:habit_tracker/services/firestore_path.dart';
 
 String documentIdFromCurrentDate() => DateTime.now().toIso8601String();
 

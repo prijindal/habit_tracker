@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:starter_architecture_flutter_firebase/app/top_level_providers.dart';
-import 'package:starter_architecture_flutter_firebase/app/sign_in/sign_in_page.dart';
+import 'package:habit_tracker/app/top_level_providers.dart';
+import 'package:habit_tracker/app/sign_in/sign_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:starter_architecture_flutter_firebase/routing/app_router.dart';
+import 'package:habit_tracker/routing/app_router.dart';
 import 'mocks.dart';
 
 void main() {

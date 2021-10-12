@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:starter_architecture_flutter_firebase/app/home/job_entries/job_entries_page.dart';
-import 'package:starter_architecture_flutter_firebase/app/home/jobs/edit_job_page.dart';
-import 'package:starter_architecture_flutter_firebase/app/home/jobs/job_list_tile.dart';
-import 'package:starter_architecture_flutter_firebase/app/home/jobs/list_items_builder.dart';
-import 'package:starter_architecture_flutter_firebase/app/home/models/job.dart';
+import 'package:habit_tracker/app/home/job_entries/job_entries_page.dart';
+import 'package:habit_tracker/app/home/jobs/edit_job_page.dart';
+import 'package:habit_tracker/app/home/jobs/job_list_tile.dart';
+import 'package:habit_tracker/app/home/jobs/list_items_builder.dart';
+import 'package:habit_tracker/app/home/models/job.dart';
 import 'package:alert_dialogs/alert_dialogs.dart';
-import 'package:starter_architecture_flutter_firebase/app/top_level_providers.dart';
-import 'package:starter_architecture_flutter_firebase/constants/strings.dart';
+import 'package:habit_tracker/app/top_level_providers.dart';
+import 'package:habit_tracker/constants/strings.dart';
 import 'package:pedantic/pedantic.dart';
-import 'package:starter_architecture_flutter_firebase/services/firestore_database.dart';
+import 'package:habit_tracker/services/firestore_database.dart';
 
 final jobsStreamProvider = StreamProvider.autoDispose<List<Job>>((ref) {
   final database = ref.watch(databaseProvider)!;

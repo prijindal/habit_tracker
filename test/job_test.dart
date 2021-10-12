@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:starter_architecture_flutter_firebase/app/home/models/job.dart';
+import 'package:habit_tracker/app/home/models/job.dart';
 
 void main() {
   group('fromMap', () {

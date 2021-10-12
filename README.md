@@ -2,7 +2,7 @@
 
 This is a **reference architecture demo** that can be used as a **starting point** for apps using Flutter & Firebase.
 
-*Also see my [codewithandrea_flutter_packages repo](https://github.com/bizz84/codewithandrea_flutter_packages), which contains the most reusable parts of this project as packages.*
+_Also see my [codewithandrea_flutter_packages repo](https://github.com/bizz84/codewithandrea_flutter_packages), which contains the most reusable parts of this project as packages._
 
 ## Motivation
 
@@ -16,7 +16,7 @@ Is "architecture" hard? How can one find the "right" or "correct" architecture i
 
 Every app has different requirements, so does the "right" architecture even exist in the first place?
 
-While I don't claim to have a silver bullet, I have refined and fine-tuned a **production-ready** architecture that I have deployed successfully into multiple Flutter & Firebase apps. 
+While I don't claim to have a silver bullet, I have refined and fine-tuned a **production-ready** architecture that I have deployed successfully into multiple Flutter & Firebase apps.
 
 I call this "**Stream-based** Architecture for Flutter & Firebase **Realtime** Apps".
 
@@ -28,7 +28,7 @@ Unlike with traditional REST APIs, with Firebase we can build **realtime** apps.
 
 That's because Firebase can **push** updates directly to **subscribed** clients when something changes.
 
-For example, widgets can **rebuild** themselves when certain Firestore *documents* or *collections* are updated.
+For example, widgets can **rebuild** themselves when certain Firestore _documents_ or _collections_ are updated.
 
 Many Firebase APIs are **inherently** stream-based. As a result, the **simplest** way of making our widgets reactive is to use [`StreamProvider`](https://pub.dev/documentation/riverpod/latest/all/StreamProvider-class.html) from the [Riverpod package](https://riverpod.dev). This provides a convenient way of **watching** changes in your Firebase streams, and automatically rebuilding widgets with minimal boilerplate code.
 
@@ -71,7 +71,7 @@ To ensure a good separation of concerns, this architecture defines three main ap
 - **Logic & Presentation Layer**: this contains the application's business and presentation logic
 - **Domain Layer**: this contains domain-specific services for interacting with 3rd party APIs
 
-*These layers may be named differently in other literature.*
+_These layers may be named differently in other literature._
 
 What matters here is that the data flows from the services into the widgets, and the call flow goes in the opposite direction.
 
@@ -99,7 +99,7 @@ As a bonus, breaking changes in external packages are easier to deal with, becau
 
 View models abstract the widgets' **state** and **presentation**.
 
-View models **do not have any reference** to the widgets themselves. Rather, they define an **interface** for **publishing** updates when something changes. 
+View models **do not have any reference** to the widgets themselves. Rather, they define an **interface** for **publishing** updates when something changes.
 
 View models can talk directly to service classes to read or write data, and access other domain-specific APIs.
 
@@ -118,7 +118,7 @@ Strictly speaking, we can introduce a distinction:
 - **pure UI widgets**: these are the usual buttons, texts, containers
 - **logic or presentational widgets**: these are used to decide what widget to return, based on some condition (e.g. to return the home page or sign page based on the authentication status of the user).
 
------
+---
 
 This project contains a demo app as a practical implementation of this architecture.
 
@@ -132,7 +132,7 @@ After signing in, users can view, create, edit and delete their jobs. For each j
 
 A separate screen shows a daily breakdown of all jobs, hours worked and pay, along with the totals.
 
-All the data is persisted with Firestore, and is kept in sync across multiple devices. 
+All the data is persisted with Firestore, and is kept in sync across multiple devices.
 
 ## Riverpod
 
@@ -189,7 +189,7 @@ final jobStreamProvider =
 
 In this case the `StreamProvider` can auto-dispose itself when all its listeners unsubscribe. And we're using `.family` to read a `jobId` parameter that is only known at runtime.
 
-Here's a widget that *watches* this `StreamProvider` and uses it to show some UI based on the stream's latest state (data available / loading / error):
+Here's a widget that _watches_ this `StreamProvider` and uses it to show some UI based on the stream's latest state (data available / loading / error):
 
 ```dart
 class JobEntriesAppBarTitle extends ConsumerWidget {
@@ -214,11 +214,11 @@ This widget class is as simple as it can be, as it only needs to **watch** for c
 
 This is great because all the logic for setting up the `StreamProvider` lives inside the provider itself, and is completely separate from the UI code.
 
---------
+---
 
 In addition to the top-level providers and the `StreamProvider`s that read data from Firestore, Riverpod is also used to create and configure view models for widgets that require local state.
 
-These view models can hold any app-specific business logic, and if they're based on `ChangeNotifier` or `StateNotifier`, they can be easily hooked up to their widgets with corresponding providers. See the [SignInViewModel](https://github.com/bizz84/starter_architecture_flutter_firebase/blob/master/lib/app/sign_in/sign_in_view_model.dart) and [SignInPage](https://github.com/bizz84/starter_architecture_flutter_firebase/blob/master/lib/app/sign_in/sign_in_page.dart) widget for an example of this.
+These view models can hold any app-specific business logic, and if they're based on `ChangeNotifier` or `StateNotifier`, they can be easily hooked up to their widgets with corresponding providers. See the [SignInViewModel](https://github.com/bizz84/habit_tracker/blob/master/lib/app/sign_in/sign_in_view_model.dart) and [SignInPage](https://github.com/bizz84/habit_tracker/blob/master/lib/app/sign_in/sign_in_page.dart) widget for an example of this.
 
 ## Project structure
 
@@ -281,7 +281,7 @@ class APIPath {
 Domain-level model classes are defined, along with `fromMap()` and `toMap()` methods for serialization.
 These classes are strongly-typed and immutable.
 
-See the [FirestoreDatabase](https://github.com/bizz84/starter_architecture_flutter_firebase/blob/master/lib/services/firestore_database.dart) and [FirestoreService](https://github.com/bizz84/starter_architecture_flutter_firebase/blob/master/lib/services/firestore_service.dart) classes for a full picture of how everything fits together.
+See the [FirestoreDatabase](https://github.com/bizz84/habit_tracker/blob/master/lib/services/firestore_database.dart) and [FirestoreService](https://github.com/bizz84/habit_tracker/blob/master/lib/services/firestore_service.dart) classes for a full picture of how everything fits together.
 
 ## Routing
 
@@ -341,7 +341,7 @@ To use this project with Firebase, some configuration steps are required.
 
 - Create a new project with the Firebase console.
 - Add iOS and Android apps in the Firebase project settings.
-- On Android, use `com.example.starter_architecture_flutter_firebase` as the package name.
+- On Android, use `com.example.habit_tracker` as the package name.
 - then, [download and copy](https://firebase.google.com/docs/flutter/setup#configure_an_android_app) `google-services.json` into `android/app`.
 - On iOS, use `com.example.starterArchitectureFlutterFirebase` as the bundle ID.
 - then, [download and copy](https://firebase.google.com/docs/flutter/setup#configure_an_ios_app) `GoogleService-Info.plist` into `iOS/Runner`, and add it to the Runner target in Xcode.
@@ -349,7 +349,7 @@ To use this project with Firebase, some configuration steps are required.
 
 See this page for full instructions:
 
-- [FlutterFire Overview](https://firebase.flutter.dev/docs/overview) 
+- [FlutterFire Overview](https://firebase.flutter.dev/docs/overview)
 
 ## Running on Flutter Web
 
@@ -359,30 +359,30 @@ To test this, add a web app in the Firebase project settings, and export the gen
 
 ```js
 export var firebaseConfig = {
-    apiKey: "<your-api-key>",
-    authDomain: "<your-auth-domain>",
-    databaseURL: "<your-database-url>",
-    projectId: "<your-project-id>",
-    storageBucket: "<your-storage-bucket>",
-    messagingSenderId: "<your-messaging-sender-id>",
-    appId: "<your-app-id>",
-    measurementId: "<your-measurement-id>"
+  apiKey: "<your-api-key>",
+  authDomain: "<your-auth-domain>",
+  databaseURL: "<your-database-url>",
+  projectId: "<your-project-id>",
+  storageBucket: "<your-storage-bucket>",
+  messagingSenderId: "<your-messaging-sender-id>",
+  appId: "<your-app-id>",
+  measurementId: "<your-measurement-id>",
 };
 ```
 
 This is then imported in the `index.html` file:
 
 ```html
-  <script src="./firebase-config.js"></script>
+<script src="./firebase-config.js"></script>
 
-  <!-- https://stackoverflow.com/questions/950087/how-do-i-include-a-javascript-file-in-another-javascript-file -->
-  <script type="module">
-    // Your web app's Firebase configuration
-    import { firebaseConfig } from './firebase-config.js';
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-  </script>
+<!-- https://stackoverflow.com/questions/950087/how-do-i-include-a-javascript-file-in-another-javascript-file -->
+<script type="module">
+  // Your web app's Firebase configuration
+  import { firebaseConfig } from "./firebase-config.js";
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 ```
 
 ## Packages
@@ -409,7 +409,7 @@ This project borrows many ideas from my [Flutter & Firebase Course](https://nnbd
 Here are some other GitHub projects that also attempt to formalize a good approach to Flutter development:
 
 - [Beyond - An approach to scalable Flutter development](https://github.com/MisterJimson/beyond)
-- This [starter app](https://github.com/gregertw/actingweb_firstapp) that includes many different production app features. Related articles: [A Production-Quality Flutter Starter App](https://stuff.greger.io/2019/07/production-quality-flutter-starter-app.html), and [this follow up](https://stuff.greger.io/2020/01/production-quality-flutter-starter-app-take-two.html). 
+- This [starter app](https://github.com/gregertw/actingweb_firstapp) that includes many different production app features. Related articles: [A Production-Quality Flutter Starter App](https://stuff.greger.io/2019/07/production-quality-flutter-starter-app.html), and [this follow up](https://stuff.greger.io/2020/01/production-quality-flutter-starter-app-take-two.html).
 
 Other relevant articles about app architecture:
 
